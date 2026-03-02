@@ -4,6 +4,8 @@ import com.zhun.pojo.User;
 import com.zhun.dao.UserDao;
 import com.zhun.dao.impl.UserDaoImpl;
 import com.zhun.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.time.LocalDateTime;
@@ -11,9 +13,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao = new UserDaoImpl();
+    @Autowired  //在程序运行中，Spring会自动查找当前类的bean对象，并赋给成员变量
+    private UserDao userDao;
 
     /**
      * 获取所有用户信息
