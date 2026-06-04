@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: springboot-mybatis-quickstart
+
+  # 配置数据库的连接信息
+  # 配置使用不同的资源池子
+  # datasource:
+  #   type: com.alibaba.druid.pool.DruidDataSource
+
+  # 数据库访问的url地址
+  datasource:
+    url: jdbc:mysql://localhost:3306/web
+    # 数据库驱动类类名
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 访问数据库-用户名
+    username: root
+    # 访问数据库-密码
+    password: 88888888
+
+# MyBatis XML 映射配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.zhun.pojo
+
+# 显示 SQL 日志
+logging:
+  level:
+    com.zhun.mapper: DEBUG

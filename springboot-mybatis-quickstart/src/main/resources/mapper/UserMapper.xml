@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhun.mapper.UserMapper">
+
+    <!-- 查询所有用户 -->
+    <select id="findAll" resultType="User">
+        SELECT id, username, password, name, age FROM user
+    </select>
+
+    <!-- 根据ID查询用户 -->
+    <select id="findById" resultType="User">
+        SELECT id, username, password, name, age FROM user WHERE id = #{id}
+    </select>
+
+    <!-- 新增用户 -->
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (username, password, name, age)
+        VALUES (#{username}, #{password}, #{name}, #{age})
+    </insert>
+
+    <!-- 修改用户 -->
+    <update id="update" parameterType="User">
+        UPDATE user
+        SET username = #{username},
+            password = #{password},
+            name     = #{name},
+            age      = #{age}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 根据ID删除用户 -->
+    <delete id="deleteById">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+</mapper>
